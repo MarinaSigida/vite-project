@@ -4,6 +4,8 @@ import { useState } from "react";
 import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
 import CreateIcon from "@mui/icons-material/Create";
+import 'react-toastify/dist/ReactToastify.css'
+import { ToastContainer, toast } from 'react-toastify';
 
 export default function TodoForm({createTodo}) {
   const [input, setInput] = useState("");
@@ -13,14 +15,22 @@ export default function TodoForm({createTodo}) {
 
   const handleSubmit = e => {
     e.preventDefault();
-    createTodo(input);
+    if(!input.trim()){
+      toast.error('Todo should not be empty!', {
+        position: toast.POSITION.TOP_CENTER
+    })
+      return;
+    } else {
+      createTodo(input);
+    }
     setInput("");
   }
 
   return (
-    <ListItem         sx={{display: 'block'}}
+    <ListItem sx={{display: 'block', mt:5}}
     >
         <form onSubmit={handleSubmit} >
+        <ToastContainer />
       <TextField
         id="outlined-basic"                
         label="Create new todo"
@@ -43,6 +53,7 @@ export default function TodoForm({createTodo}) {
         }}
       />
       </form>
+      
     </ListItem>
   );
 }

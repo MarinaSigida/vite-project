@@ -55,7 +55,7 @@ export default function TodoList() {
 
   return (
     <Box sx={{ display: "flex", justifyContent: "center", flexDirection:"column", alignItems:"center", m:5 }}>
-      <Typography variant="h3" component="h1" sx={{ flexGrow: 1 }}>
+      <Typography variant="h3" component="h1" sx={{ flexGrow: 1, mb:5, fontSize:40, letterSpacing:1.5}}>
         Todos
       </Typography>
       <List sx={{ width: "100%", maxWidth: 500, bgcolor: "background.paper" }}>
